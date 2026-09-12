@@ -1,6 +1,6 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-from query_data import query_rag
+from query_data import extract_text, query_rag
 
 EVAL_PROMPT = """
 Expected Response: {expected_response}
@@ -44,8 +44,8 @@ def query_and_validate(question: str, expected_response: str) -> bool:
         expected_response=expected_response, actual_response=response_text
     )
 
-    model = ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=0)
-    evaluation_results_str = model.invoke(prompt).content
+    model = ChatGoogleGenerativeAI(model="gemini-3.6-flash", temperature=0)
+    evaluation_results_str = extract_text(model.invoke(prompt).content)
     evaluation_results_str_cleaned = evaluation_results_str.strip().lower()
 
     print(prompt)

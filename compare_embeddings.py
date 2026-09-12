@@ -5,7 +5,7 @@ load_dotenv()
 
 
 def main():
-    embedding_function = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
+    embedding_function = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
 
     word1, word2 = "strategy", "tactics"
     vector1 = embedding_function.embed_query(word1)

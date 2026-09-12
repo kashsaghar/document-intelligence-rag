@@ -100,5 +100,8 @@ rag-document-chatbot/
 - The vector database (`chroma/`) and `.env` are git-ignored — never commit your API key.
 - `create_database.py` wipes and rebuilds `chroma/` from scratch every time it runs.
 - If `query_data.py` reports "Unable to find matching results," the top match's relevance score
-  was below the `0.7` threshold — try rephrasing the question or lowering the threshold in
+  was below the `0.5` threshold — try rephrasing the question or lowering the threshold in
   `query_data.py`.
+- Model names: `create_database.py`/`query_data.py` use `models/gemini-embedding-001` for
+  embeddings and `gemini-3.6-flash` for chat. If Google retires/renames these later, update the
+  model strings — an error message from the API will usually name the current replacement.
